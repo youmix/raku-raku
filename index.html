@@ -1,18 +1,196 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>Redirecting...</title>
-
-  <!-- 方法1: meta タグによるリダイレクト -->
-  <meta http-equiv="refresh" content="0; url=https://be7csauygjdn.trickle.host">
-
-  <!-- 方法2: JavaScript によるリダイレクト -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>商品カタログ - 51アイテム（1ページ完結・Tailwind）</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    window.location.href = "https://be7csauygjdn.trickle.host";
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            'fade-in': 'fadeIn .35s ease-out both',
+            'slide-up': 'slideUp .35s ease-out both'
+          },
+          keyframes: {
+            fadeIn: {from:{opacity:0}, to:{opacity:1}},
+            slideUp: {from:{transform:'translateY(8px)', opacity:0}, to:{transform:'translateY(0)', opacity:1}}
+          }
+        }
+      }
+    }
   </script>
+  <style>
+    .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .hide-scrollbar{scrollbar-width:none} .hide-scrollbar::-webkit-scrollbar{display:none}
+  </style>
 </head>
-<body>
+<body class="min-h-screen bg-gradient-to-br from-sky-50 via-indigo-50 to-fuchsia-50 text-neutral-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-500 to-fuchsia-500 shadow"></div>
+          <div>
+            <h1 class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-fuchsia-600 bg-clip-text text-transparent">プレミアム生地カタログ</h1>
+            <p class="text-xs sm:text-sm text-neutral-500">全51アイテム・1ページ完結</p>
+          </div>
+        </div>
+        <div class="relative w-full max-w-lg hidden md:block">
+          <input id="searchInput" type="search" placeholder="検索…（例：綿麻 / ツイル / レオパード / ハギレ）" class="w-full rounded-xl border border-neutral-200 bg-white pl-11 pr-4 py-2.5 text-sm shadow-sm outline-none focus:ring-2 focus:ring-indigo-200" />
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-5.2-5.2M10 18a8 8 0 100-16 8 8 0 000 16z"/></svg>
+        </div>
+        <div class="md:hidden">
+          <button id="searchToggle" class="rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm shadow-sm">検索</button>
+        </div>
+      </div>
+      <!-- mobile search -->
+      <div id="searchMobile" class="hidden pb-3 md:hidden">
+        <div class="relative">
+          <input id="searchInputM" type="search" placeholder="検索…" class="w-full rounded-xl border border-neutral-200 bg-white pl-11 pr-4 py-2.5 text-sm shadow-sm outline-none focus:ring-2 focus:ring-indigo-200" />
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-5.2-5.2M10 18a8 8 0 100-16 8 8 0 000 16z"/></svg>
+        </div>
+      </div>
+    </div>
+  </header>
 
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
+    <!-- Category Tabs (sticky) -->
+    <div class="sticky top-16 z-40 -mx-4 sm:mx-0 bg-gradient-to-r from-white/80 to-white/60 backdrop-blur py-3">
+      <div class="hide-scrollbar flex gap-2 overflow-x-auto px-4 sm:px-0">
+        <button data-cat="all" class="tab-btn active px-5 py-2.5 rounded-lg text-sm font-medium shadow-sm bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white">すべて (51)</button>
+        <button data-cat="cottonlinen" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-medium bg-white border border-neutral-200 hover:bg-neutral-50">綿麻・綿100% (12)</button>
+        <button data-cat="twill" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-medium bg-white border border-neutral-200 hover:bg-neutral-50">ツイル・オックス (10)</button>
+        <button data-cat="knit" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-medium bg-white border border-neutral-200 hover:bg-neutral-50">ニット・ガーゼ (9)</button>
+        <button data-cat="pattern" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-medium bg-white border border-neutral-200 hover:bg-neutral-50">柄物・動物柄 (8)</button>
+        <button data-cat="supplies" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-medium bg-white border border-neutral-200 hover:bg-neutral-50">副資材・芯地 (6)</button>
+        <button data-cat="remnant" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-medium bg-white border border-neutral-200 hover:bg-neutral-50">ハギレ (6)</button>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <section id="menuGrid" class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
+      <!-- JSで注入 -->
+    </section>
+
+    <!-- No results -->
+    <div id="noResults" class="hidden py-16 text-center">
+      <div class="text-7xl mb-4">🔍</div>
+      <h3 class="text-xl font-bold mb-1">該当する商品はありません</h3>
+      <p class="text-neutral-500">検索条件やカテゴリを変更してください。</p>
+    </div>
+  </main>
+
+  <!-- Floating stats -->
+  <aside class="fixed bottom-5 right-5 rounded-xl bg-white/90 backdrop-blur p-4 shadow-2xl border-l-4 border-indigo-500">
+    <div class="text-xs text-neutral-500">表示中</div>
+    <div id="itemCount" class="text-2xl font-extrabold bg-gradient-to-r from-indigo-600 to-fuchsia-600 bg-clip-text text-transparent">51</div>
+    <div class="text-[11px] text-neutral-500">アイテム</div>
+  </aside>
+
+  <script>
+    // ==== ダミーデータ（51件・カテゴリは布系） ====
+    const productItems = Array.from({length:51}).map((_,i)=>{
+      const id=i+1;
+      const cats=['cottonlinen','twill','knit','pattern','supplies','remnant'];
+      const cat=cats[i%cats.length];
+      const emojiMap={cottonlinen:'🧵',twill:'📐',knit:'🧶',pattern:'🐆',supplies:'🧰',remnant:'📦'};
+      const names={
+        cottonlinen:['綿麻キャンバス 無地','コットンブロード','ダブルガーゼ 20色','先染めストライプ','コットンローン','綿100%シーチング'],
+        twill:['ツイル 無地','オックスフォード','デニム ライトオンス','先染めチェック ツイル','ツイルストレッチ','ハンプ 厚手'],
+        knit:['天竺ニット','リブニット','裏毛スウェット','ワッフルニット','ニットバイアス','ベビーニット'],
+        pattern:['レオパード柄 ベロア','北欧風 花柄','ボーダー太ピッチ','ドットプリント','幾何学総柄','迷彩プリント','ギンガムチェック','ペイズリー'],
+        supplies:['接着芯 薄手','接着芯 厚手','ゴムテープ 20mm','マグネットホック','トート用テープ','ファスナー各色'],
+        remnant:['ハギレセット A','ハギレセット B','端切れカラフル','柄アソート','大判ハギレ','お楽しみ袋']
+      };
+      const pick=(arr)=>arr[id%arr.length];
+      const title=pick(names[cat]);
+      return {
+        id,
+        name: title || `アイテム #${id}`,
+        category: cat,
+        price: ['¥390〜','¥590〜','¥680〜','¥740〜','¥890〜','¥1,200〜'][id%6],
+        description: {
+          cottonlinen:'肌触りが良くバッグや小物に最適',
+          twill:'丈夫で扱いやすくエプロン・袋物に',
+          knit:'伸縮性がありカットソーに最適',
+          pattern:'存在感のある柄で衣装や小物に',
+          supplies:'縫製の仕上げや補強に',
+          remnant:'練習用・小物作りにお得なセット'
+        }[cat],
+        image: emojiMap[cat],
+        popular: id%7===0,
+        sale: id%9===0
+      }
+    });
+
+    let currentItems=[...productItems];
+
+    const gridEl=document.getElementById('menuGrid');
+    const countEl=document.getElementById('itemCount');
+    const noResults=document.getElementById('noResults');
+
+    function card(item){
+      return `
+      <article class="group animate-fade-in overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition hover:shadow-md">
+        <div class="relative h-36 sm:h-40 bg-gradient-to-br from-white to-neutral-100 flex items-center justify-center text-6xl">${item.image}
+          ${item.popular?'<span class=\"absolute left-2 top-2 rounded-full bg-rose-600 px-2 py-0.5 text-[10px] font-semibold text-white\">人気</span>':''}
+          ${item.sale?'<span class=\"absolute right-2 top-2 rounded-full bg-amber-500 px-2 py-0.5 text-[10px] font-semibold text-white\">SALE</span>':''}
+        </div>
+        <div class="p-3">
+          <h3 class="text-sm font-semibold leading-tight line-clamp-2 group-hover:text-indigo-600 transition">${item.name}</h3>
+          <p class="mt-1 text-xs text-neutral-500">${item.description}</p>
+          <div class="mt-3 flex items-center justify-between">
+            <span class="font-semibold">${item.price}</span>
+            <button class="rounded-xl border border-neutral-200 bg-white px-3 py-1.5 text-xs shadow-sm hover:bg-neutral-50">見る</button>
+          </div>
+        </div>
+      </article>`
+    }
+
+    function render(items){
+      if(items.length===0){
+        gridEl.innerHTML='';
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+        gridEl.innerHTML = items.map(card).join('');
+      }
+      countEl.textContent=items.length;
+    }
+
+    function filterByCategory(cat){
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active','text-white','bg-gradient-to-r','from-indigo-500','to-fuchsia-500'));
+      const btn=[...document.querySelectorAll('.tab-btn')].find(b=>b.dataset.cat===cat);
+      if(btn){ btn.classList.add('active','text-white','bg-gradient-to-r','from-indigo-500','to-fuchsia-500'); btn.classList.remove('bg-white','border','border-neutral-200'); }
+      currentItems = (cat==='all') ? [...productItems] : productItems.filter(it=>it.category===cat);
+      render(currentItems);
+    }
+
+    // Event bindings
+    document.querySelectorAll('.tab-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>filterByCategory(btn.dataset.cat));
+    });
+
+    const doSearch=(q)=>{
+      const query=q.trim().toLowerCase();
+      const base=currentItems===productItems?productItems:currentItems; // 検索は現在カテゴリに対して
+      const filtered=base.filter(it=> it.name.toLowerCase().includes(query) || it.description.toLowerCase().includes(query));
+      render(query?filtered:base);
+    }
+
+    document.getElementById('searchInput')?.addEventListener('input',e=>doSearch(e.target.value));
+    document.getElementById('searchInputM')?.addEventListener('input',e=>doSearch(e.target.value));
+
+    document.getElementById('searchToggle')?.addEventListener('click',()=>{
+      const box=document.getElementById('searchMobile');
+      box.classList.toggle('hidden');
+    });
+
+    // 初期表示
+    render(productItems);
+  </script>
 </body>
 </html>
