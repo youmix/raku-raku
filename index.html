@@ -1,196 +1,854 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>商品カタログ - 51アイテム（1ページ完結・Tailwind）</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          animation: {
-            'fade-in': 'fadeIn .35s ease-out both',
-            'slide-up': 'slideUp .35s ease-out both'
-          },
-          keyframes: {
-            fadeIn: {from:{opacity:0}, to:{opacity:1}},
-            slideUp: {from:{transform:'translateY(8px)', opacity:0}, to:{transform:'translateY(0)', opacity:1}}
-          }
+    <meta charset="utf-8">
+    <meta name="keywords" content="ベロア生地 柄,ツイル生地,帆布 号数,綿麻生地,ベロア素材,北欧柄,シフォン生地,ラメ生地,生地の種類,生地,布,手芸,ハンドメイド,楽天市場,通信販売,通販,ショッピング,オンラインショッピング,買い物,プレゼント,ギフト,贈り物,贈答品,お中元,お歳暮,お買い得">
+    <meta name="description" content="全品送料無料！趣味・生地 布生 活雑貨のお店サザンウインドは安心の「おもてなし規格紅認証」取得ショップです。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【楽天市場】趣味の手芸用品・生地 布生 素材のお店：サザンウインド　楽天市場店[トップページ]</title>
+    <link rel="SHORTCUT ICON" href="https://www.rakuten.co.jp/favicon.ico">
+    <link href="https://use.fontawesome.com/releases/v5.4.0/css/all.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
         }
-      }
-    }
-  </script>
-  <style>
-    .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .hide-scrollbar{scrollbar-width:none} .hide-scrollbar::-webkit-scrollbar{display:none}
-  </style>
+        
+        /* ハンバーガーメニューのアニメーション */
+        .menu-trigger {
+            cursor: pointer;
+        }
+        
+        .hum span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        
+        .menu-trigger.active .hum span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .menu-trigger.active .hum span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-trigger.active .hum span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        /* モバイルメニューの表示/非表示 */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* 検索フォームの表示/非表示 */
+        .search-menu {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .search-menu.open {
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-sky-50 via-indigo-50 to-fuchsia-50 text-neutral-900">
-  <!-- Header -->
-  <header class="sticky top-0 z-50 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex h-16 items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-500 to-fuchsia-500 shadow"></div>
-          <div>
-            <h1 class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-fuchsia-600 bg-clip-text text-transparent">プレミアム生地カタログ</h1>
-            <p class="text-xs sm:text-sm text-neutral-500">全51アイテム・1ページ完結</p>
-          </div>
+<body class="bg-gray-50">
+    <!-- デスクトップヘッダー -->
+    <header class="hidden lg:block bg-white shadow-sm">
+        <!-- ロゴ・支払い方法エリア -->
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex-shrink-0">
+                    <a href="https://www.rakuten.ne.jp/gold/southernwind/" target="_top">
+                        <img src="https://www.rakuten.ne.jp/gold/southernwind/img/logo.png" alt="サザンウインド" class="h-12 w-auto">
+                    </a>
+                </div>
+                <div class="flex-shrink-0">
+                    <img src="https://www.rakuten.ne.jp/gold/southernwind/img/pay3.png" alt="支払い方法" class="h-8 w-auto">
+                </div>
+            </div>
         </div>
-        <div class="relative w-full max-w-lg hidden md:block">
-          <input id="searchInput" type="search" placeholder="検索…（例：綿麻 / ツイル / レオパード / ハギレ）" class="w-full rounded-xl border border-neutral-200 bg-white pl-11 pr-4 py-2.5 text-sm shadow-sm outline-none focus:ring-2 focus:ring-indigo-200" />
-          <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-5.2-5.2M10 18a8 8 0 100-16 8 8 0 000 16z"/></svg>
+        
+        <!-- ナビゲーションエリア -->
+        <div class="bg-gray-100 border-t">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between items-center py-3">
+                    <div class="flex items-center space-x-6">
+                        <a href="#products" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">商品カテゴリー</a>
+                    </div>
+                    <nav class="flex items-center space-x-6">
+                        <a href="https://www.rakuten.co.jp/southernwind/info.html" target="_top" class="text-gray-700 hover:text-blue-600 transition-colors">会社概要</a>
+                        <a href="https://www.rakuten.co.jp/southernwind/info2.html" target="_top" class="text-gray-700 hover:text-blue-600 transition-colors">お買い物ガイド</a>
+                        <a href="https://basket.step.rakuten.co.jp/rms/mall/bs/cart/?shop_bid=369661&__event=ES01_003_001" target="_top" class="text-gray-700 hover:text-blue-600 transition-colors">お買い物かご</a>
+                        <a href="https://ask.step.rakuten.co.jp/inquiry-form/?ms=500&shop_id=369661" target="_blank" class="text-gray-700 hover:text-blue-600 transition-colors">お問い合わせ</a>
+                        <a href="https://www.rakuten.co.jp/" target="_blank" class="text-gray-700 hover:text-blue-600 transition-colors">楽天市場</a>
+                    </nav>
+                </div>
+            </div>
         </div>
-        <div class="md:hidden">
-          <button id="searchToggle" class="rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm shadow-sm">検索</button>
+    </header>
+
+    <!-- モバイルヘッダー -->
+    <header class="lg:hidden bg-white shadow-sm sticky top-0 z-50">
+        <div class="flex justify-between items-center px-4 py-3">
+            <!-- ハンバーガーメニューボタン -->
+            <button class="menu-trigger p-2" onclick="toggleMobileMenu()">
+                <div class="hum">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            
+            <!-- ロゴ -->
+            <div class="flex-1 text-center">
+                <a href="https://www.rakuten.ne.jp/gold/southernwind/" target="_top">
+                    <img src="https://www.rakuten.ne.jp/gold/southernwind/img/logo.png" alt="サザンウインド" class="h-8 w-auto mx-auto">
+                </a>
+            </div>
+            
+            <!-- 検索・カートアイコン -->
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleSearchMenu()" class="p-2">
+                    <i class="fas fa-search text-gray-600"></i>
+                </button>
+                <a href="https://basket.step.rakuten.co.jp/rms/mall/bs/cart/?shop_bid=369661&__event=ES01_003_001" target="_top" class="p-2">
+                    <i class="fas fa-shopping-cart text-gray-600"></i>
+                </a>
+            </div>
         </div>
-      </div>
-      <!-- mobile search -->
-      <div id="searchMobile" class="hidden pb-3 md:hidden">
-        <div class="relative">
-          <input id="searchInputM" type="search" placeholder="検索…" class="w-full rounded-xl border border-neutral-200 bg-white pl-11 pr-4 py-2.5 text-sm shadow-sm outline-none focus:ring-2 focus:ring-indigo-200" />
-          <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-5.2-5.2M10 18a8 8 0 100-16 8 8 0 000 16z"/></svg>
+    </header>
+
+    <!-- モバイルメニュー -->
+    <div class="mobile-menu fixed inset-y-0 left-0 z-40 w-80 bg-white shadow-lg lg:hidden">
+        <div class="p-6">
+            <div class="space-y-4">
+                <a href="https://www.rakuten.co.jp/southernwind/info.html" target="_top" class="block text-gray-700 hover:text-blue-600 py-2 border-b">会社概要</a>
+                <a href="https://www.rakuten.co.jp/southernwind/info2.html" target="_top" class="block text-gray-700 hover:text-blue-600 py-2 border-b">お買い物ガイド</a>
+                <a href="https://basket.step.rakuten.co.jp/rms/mall/bs/cart/?shop_bid=369661&__event=ES01_003_001" target="_top" class="block text-gray-700 hover:text-blue-600 py-2 border-b">お買い物かご</a>
+                <a href="https://ask.step.rakuten.co.jp/inquiry-form/?ms=500&shop_id=369661" target="_blank" class="block text-gray-700 hover:text-blue-600 py-2 border-b">お問い合わせ</a>
+                <a href="https://www.rakuten.co.jp/" target="_blank" class="block text-gray-700 hover:text-blue-600 py-2">楽天市場</a>
+            </div>
+            
+            <!-- サイドバーコンテンツ -->
+            <div class="mt-8">
+                <iframe src="./category/side2-2.html" class="w-full h-96 border-0"></iframe>
+            </div>
         </div>
-      </div>
     </div>
-  </header>
 
-  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
-    <!-- Category Tabs (sticky) -->
-    <div class="sticky top-16 z-40 -mx-4 sm:mx-0 bg-gradient-to-r from-white/80 to-white/60 backdrop-blur py-3">
-      <div class="hide-scrollbar flex gap-2 overflow-x-auto px-4 sm:px-0">
-        <button data-cat="all" class="tab-btn active px-5 py-2.5 rounded-lg text-sm font-medium shadow-sm bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white">すべて (51)</button>
-        <button data-cat="cottonlinen" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-medium bg-white border border-neutral-200 hover:bg-neutral-50">綿麻・綿100% (12)</button>
-        <button data-cat="twill" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-medium bg-white border border-neutral-200 hover:bg-neutral-50">ツイル・オックス (10)</button>
-        <button data-cat="knit" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-medium bg-white border border-neutral-200 hover:bg-neutral-50">ニット・ガーゼ (9)</button>
-        <button data-cat="pattern" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-medium bg-white border border-neutral-200 hover:bg-neutral-50">柄物・動物柄 (8)</button>
-        <button data-cat="supplies" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-medium bg-white border border-neutral-200 hover:bg-neutral-50">副資材・芯地 (6)</button>
-        <button data-cat="remnant" class="tab-btn px-5 py-2.5 rounded-lg text-sm font-medium bg-white border border-neutral-200 hover:bg-neutral-50">ハギレ (6)</button>
-      </div>
+    <!-- モバイル検索メニュー -->
+    <div class="search-menu fixed top-16 left-0 right-0 z-30 bg-white shadow-lg lg:hidden">
+        <div class="p-4">
+            <form method="get" action="https://esearch.rakuten.co.jp/rms/sd/esearch/vc" accept-charset="euc-jp">
+                <div class="relative">
+                    <input type="text" name="sitem" placeholder="何をお探しですか？" 
+                           class="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <input value="369661" type="hidden" name="sid">
+                    <input value="southernwind" type="hidden" name="su">
+                    <input value="サザンウインド　楽天市場店" type="hidden" name="sn">
+                    <button type="submit" class="absolute right-3 top-1/2 transform -translate-y-1/2">
+                        <i class="fas fa-search text-gray-400"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <!-- Grid -->
-    <section id="menuGrid" class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
-      <!-- JSで注入 -->
-    </section>
+    <!-- オーバーレイ -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden" onclick="closeMobileMenu()"></div>
 
-    <!-- No results -->
-    <div id="noResults" class="hidden py-16 text-center">
-      <div class="text-7xl mb-4">🔍</div>
-      <h3 class="text-xl font-bold mb-1">該当する商品はありません</h3>
-      <p class="text-neutral-500">検索条件やカテゴリを変更してください。</p>
-    </div>
-  </main>
-
-  <!-- Floating stats -->
-  <aside class="fixed bottom-5 right-5 rounded-xl bg-white/90 backdrop-blur p-4 shadow-2xl border-l-4 border-indigo-500">
-    <div class="text-xs text-neutral-500">表示中</div>
-    <div id="itemCount" class="text-2xl font-extrabold bg-gradient-to-r from-indigo-600 to-fuchsia-600 bg-clip-text text-transparent">51</div>
-    <div class="text-[11px] text-neutral-500">アイテム</div>
-  </aside>
-
-  <script>
-    // ==== ダミーデータ（51件・カテゴリは布系） ====
-    const productItems = Array.from({length:51}).map((_,i)=>{
-      const id=i+1;
-      const cats=['cottonlinen','twill','knit','pattern','supplies','remnant'];
-      const cat=cats[i%cats.length];
-      const emojiMap={cottonlinen:'🧵',twill:'📐',knit:'🧶',pattern:'🐆',supplies:'🧰',remnant:'📦'};
-      const names={
-        cottonlinen:['綿麻キャンバス 無地','コットンブロード','ダブルガーゼ 20色','先染めストライプ','コットンローン','綿100%シーチング'],
-        twill:['ツイル 無地','オックスフォード','デニム ライトオンス','先染めチェック ツイル','ツイルストレッチ','ハンプ 厚手'],
-        knit:['天竺ニット','リブニット','裏毛スウェット','ワッフルニット','ニットバイアス','ベビーニット'],
-        pattern:['レオパード柄 ベロア','北欧風 花柄','ボーダー太ピッチ','ドットプリント','幾何学総柄','迷彩プリント','ギンガムチェック','ペイズリー'],
-        supplies:['接着芯 薄手','接着芯 厚手','ゴムテープ 20mm','マグネットホック','トート用テープ','ファスナー各色'],
-        remnant:['ハギレセット A','ハギレセット B','端切れカラフル','柄アソート','大判ハギレ','お楽しみ袋']
-      };
-      const pick=(arr)=>arr[id%arr.length];
-      const title=pick(names[cat]);
-      return {
-        id,
-        name: title || `アイテム #${id}`,
-        category: cat,
-        price: ['¥390〜','¥590〜','¥680〜','¥740〜','¥890〜','¥1,200〜'][id%6],
-        description: {
-          cottonlinen:'肌触りが良くバッグや小物に最適',
-          twill:'丈夫で扱いやすくエプロン・袋物に',
-          knit:'伸縮性がありカットソーに最適',
-          pattern:'存在感のある柄で衣装や小物に',
-          supplies:'縫製の仕上げや補強に',
-          remnant:'練習用・小物作りにお得なセット'
-        }[cat],
-        image: emojiMap[cat],
-        popular: id%7===0,
-        sale: id%9===0
-      }
-    });
-
-    let currentItems=[...productItems];
-
-    const gridEl=document.getElementById('menuGrid');
-    const countEl=document.getElementById('itemCount');
-    const noResults=document.getElementById('noResults');
-
-    function card(item){
-      return `
-      <article class="group animate-fade-in overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition hover:shadow-md">
-        <div class="relative h-36 sm:h-40 bg-gradient-to-br from-white to-neutral-100 flex items-center justify-center text-6xl">${item.image}
-          ${item.popular?'<span class=\"absolute left-2 top-2 rounded-full bg-rose-600 px-2 py-0.5 text-[10px] font-semibold text-white\">人気</span>':''}
-          ${item.sale?'<span class=\"absolute right-2 top-2 rounded-full bg-amber-500 px-2 py-0.5 text-[10px] font-semibold text-white\">SALE</span>':''}
+    <!-- メインコンテンツ -->
+    <main class="min-h-screen">
+        <!-- 社長バナー -->
+        <div class="w-full">
+            <img src="https://shop.r10s.jp/southernwind/cabinet/imgrc0332426796.jpg?v=174952420804401" 
+                 alt="社長バナー" class="w-full h-auto object-cover">
         </div>
-        <div class="p-3">
-          <h3 class="text-sm font-semibold leading-tight line-clamp-2 group-hover:text-indigo-600 transition">${item.name}</h3>
-          <p class="mt-1 text-xs text-neutral-500">${item.description}</p>
-          <div class="mt-3 flex items-center justify-between">
-            <span class="font-semibold">${item.price}</span>
-            <button class="rounded-xl border border-neutral-200 bg-white px-3 py-1.5 text-xs shadow-sm hover:bg-neutral-50">見る</button>
-          </div>
+
+        <!-- 評価・キャンペーンバナー（デスクトップのみ） -->
+        <div class="hidden lg:block max-w-7xl mx-auto px-4 py-8">
+            <div class="w-full overflow-hidden">
+                <iframe src="https://www.rakuten.ne.jp/gold/southernwind/GVs8VLDPwQ/hdf6UitMfxp5_1/JO97tCR39Ux.html" 
+                        class="w-full h-12 border-0"></iframe>
+            </div>
         </div>
-      </article>`
-    }
 
-    function render(items){
-      if(items.length===0){
-        gridEl.innerHTML='';
-        noResults.classList.remove('hidden');
-      } else {
-        noResults.classList.add('hidden');
-        gridEl.innerHTML = items.map(card).join('');
-      }
-      countEl.textContent=items.length;
-    }
+        <!-- キャンペーンバナー -->
+        <div class="w-full">
+            <div class="max-w-7xl mx-auto px-0 lg:px-4">
+                <div class="space-y-0 lg:space-y-4">
+                    <!-- 1円セール -->
+                    <div class="w-full">
+                        <a href="https://www.rakuten.ne.jp/gold/southernwind/category/index-000.html" target="_blank" rel="noopener noreferrer">
+                            <img src="https://image.rakuten.co.jp/southernwind/cabinet/imgrc0333313854.jpg?v=2100663" 
+                                 alt="1円セール開催中" class="w-full h-auto">
+                        </a>
+                    </div>
+                    
+                    <!-- メルマガ・お気に入り登録 -->
+                    <div class="flex flex-col lg:flex-row gap-0 lg:gap-4">
+                        <div class="flex-1">
+                            <a href="https://www.rakuten.co.jp/southernwind/news.html" target="_blank" rel="noopener noreferrer">
+                                <img src="https://image.rakuten.co.jp/southernwind/cabinet/imgrc0333299466.jpg?v=2199553" 
+                                     alt="メルマガ登録" class="w-full h-auto">
+                            </a>
+                        </div>
+                        <div class="flex-1">
+                            <a href="https://my.bookmark.rakuten.co.jp/?func=reg&shop_bid=369661&svid=229" target="_blank" rel="noopener noreferrer">
+                                <img src="https://image.rakuten.co.jp/southernwind/cabinet/imgrc0333309833.jpg?v=21665573" 
+                                     alt="お気に入りショップ登録" class="w-full h-auto">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    function filterByCategory(cat){
-      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active','text-white','bg-gradient-to-r','from-indigo-500','to-fuchsia-500'));
-      const btn=[...document.querySelectorAll('.tab-btn')].find(b=>b.dataset.cat===cat);
-      if(btn){ btn.classList.add('active','text-white','bg-gradient-to-r','from-indigo-500','to-fuchsia-500'); btn.classList.remove('bg-white','border','border-neutral-200'); }
-      currentItems = (cat==='all') ? [...productItems] : productItems.filter(it=>it.category===cat);
-      render(currentItems);
-    }
+        <!-- 商品情報フレーム -->
+        <div class="w-full max-w-5xl mx-auto px-0 lg:px-4 py-8">
+            <div class="space-y-4">
+                <div class="w-full">
+                    <img src="https://www.rakuten.ne.jp/gold/southernwind/GVs8VLDPwQ/9zCIG4aTZh_3/3OoG5pnTqz.png" 
+                         class="w-full h-auto" alt="">
+                    <div class="w-full h-56 overflow-hidden">
+                        <iframe src="https://www.rakuten.ne.jp/gold/southernwind/GVs8VLDPwQ/9zCIG4aTZh_3/NlkVbmND3Il.html" 
+                                class="w-full h-56 border-0"></iframe>
+                    </div>
+                </div>
+                
+                <div class="w-full">
+                    <img src="https://www.rakuten.ne.jp/gold/southernwind/GVs8VLDPwQ/DK5c9TiYtr_1/vQDnvV3w.png" 
+                         class="w-full h-auto" alt="">
+                    <div class="w-full h-56 overflow-hidden">
+                        <iframe src="https://www.rakuten.ne.jp/gold/southernwind/GVs8VLDPwQ/DK5c9TiYtr_1/Hexex3xqKPPe.html" 
+                                class="w-full h-56 border-0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    // Event bindings
-    document.querySelectorAll('.tab-btn').forEach(btn=>{
-      btn.addEventListener('click',()=>filterByCategory(btn.dataset.cat));
-    });
+        <!-- 検索フォーム（デスクトップのみ） -->
+        <div class="hidden lg:block max-w-7xl mx-auto px-4 py-8">
+            <div class="text-center">
+                <iframe src="https://www.rakuten.ne.jp/gold/southernwind/form/form.html" 
+                        class="w-full max-w-lg h-20 border-0 mx-auto"></iframe>
+            </div>
+        </div>
 
-    const doSearch=(q)=>{
-      const query=q.trim().toLowerCase();
-      const base=currentItems===productItems?productItems:currentItems; // 検索は現在カテゴリに対して
-      const filtered=base.filter(it=> it.name.toLowerCase().includes(query) || it.description.toLowerCase().includes(query));
-      render(query?filtered:base);
-    }
+        <!-- 商品セクション -->
+        <section id="products" class="py-8 lg:py-12">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- サイドバー（デスクトップのみ） -->
+                    <aside class="hidden lg:block w-64 flex-shrink-0">
+                        <div class="sticky top-8">
+                            <!-- 検索フォーム -->
+                            <div class="bg-white p-4 rounded-lg shadow-sm mb-6">
+                                <form method="get" action="https://esearch.rakuten.co.jp/rms/sd/esearch/vc" accept-charset="euc-jp">
+                                    <div class="relative">
+                                        <input type="text" name="sitem" placeholder="何をお探しですか？" 
+                                               class="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                                        <input value="6" type="hidden" name="sv">
+                                        <input value="369661" type="hidden" name="sid">
+                                        <input value="southernwind" type="hidden" name="su">
+                                        <input value="サザンウインド　楽天市場店" type="hidden" name="sn">
+                                        <input value="A" type="hidden" name="f">
+                                        <button type="submit" class="absolute right-3 top-1/2 transform -translate-y-1/2">
+                                            <i class="fas fa-search text-gray-400"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- サイドバーコンテンツ -->
+                            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                                <iframe src="./category/side2-2.html" class="w-full h-96 border-0"></iframe>
+                            </div>
+                        </div>
+                    </aside>
 
-    document.getElementById('searchInput')?.addEventListener('input',e=>doSearch(e.target.value));
-    document.getElementById('searchInputM')?.addEventListener('input',e=>doSearch(e.target.value));
+                    <!-- メインコンテンツエリア -->
+                    <div class="flex-1">
+                        <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Products</h2>
+                        
+                        <!-- 商品カードグリッド -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                            <!-- 綿麻生地 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-001.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/1.png" 
+                                         alt="綿麻生地" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">扱いやすい基本素材。初心者からベテランまで、様々な質感と豊富なカラーを取り揃えました。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-001.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-lg hover:bg-green-600 transition-colors">
+                                            素材・綿麻生地
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
 
-    document.getElementById('searchToggle')?.addEventListener('click',()=>{
-      const box=document.getElementById('searchMobile');
-      box.classList.toggle('hidden');
-    });
+                            <!-- 綿ポリ生地 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-004.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/2.png" 
+                                         alt="綿ポリ生地" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">コットン ポリエステル 素材でできており、通気性 保温性 柔軟性 にも富んでいます。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-004.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-lg hover:bg-green-600 transition-colors">
+                                            素材・綿ポリエステル生地
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
 
-    // 初期表示
-    render(productItems);
-  </script>
+                            <!-- 綿生地 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-005.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/3.png" 
+                                         alt="綿生地" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">優しくふんわりと包み込んでくれるような肌触り、通気性・吸水性ともに優れている素材です。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-005.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-lg hover:bg-green-600 transition-colors">
+                                            素材・綿生地
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 麻(リネン) -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-044.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/asa.png" 
+                                         alt="麻(リネン)" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">麻繊維は通気性に優れており、吸湿性も高く、汗を素早く吸収して速乾性があります。軽量で涼しい素材です。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-044.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-lg hover:bg-green-600 transition-colors">
+                                            素材・麻(リネン)
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ポリ生地 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-027.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/4.png" 
+                                         alt="ポリ生地" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">ポリ生地はしわになりにくく、軽量で丈夫、速乾性があります。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-027.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-lg hover:bg-green-600 transition-colors">
+                                            素材・ポリエステル生地
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ベロア生地 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-006.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/5.png" 
+                                         alt="ベロア生地" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">ベロア生地は、柔らかく滑らかな手触りと上品な光沢が特徴の高級感ある素材です。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-006.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-lg hover:bg-green-600 transition-colors">
+                                            素材・ベロア生地
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ツイル生地 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-007.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/6.png" 
+                                         alt="ツイル生地" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">ツイル生地は斜文織りで作られ、丈夫で型崩れしにくく、上品な光沢があります。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-007.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-lg hover:bg-green-600 transition-colors">
+                                            種類・ツイル生地
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 帆布 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-008.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/7.png" 
+                                         alt="帆布" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">帆布は厚手で丈夫な平織り生地。バッグや雑貨作りに最適な実用的な素材です。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-008.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors">
+                                            種類・帆布
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- シフォン生地 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-009.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/8.png" 
+                                         alt="シフォン生地" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">シフォン生地は軽やかで透明感があり、エレガントなドレープが美しい薄手の素材です。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-009.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors">
+                                            種類・シフォン生地
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 白系生地 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-030.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/030.png" 
+                                         alt="白系" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">「白い生地」特集<br>白い生地で、清潔感と上品さを演出。洗練された無限の可能性。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-030.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-yellow-300 rounded-lg hover:bg-yellow-400 transition-colors">
+                                            柄/質感・「白い生地」
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 黒系生地 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-031.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/031.png" 
+                                         alt="黒い生地" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">「黒い生地」特集<br>あなたの個性を表現します。黒い生地で映し出される、格調高い輝き。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-031.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-yellow-300 rounded-lg hover:bg-yellow-400 transition-colors">
+                                            柄/質感・「黒い生地」
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- キラキラ系 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-032.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/032.png" 
+                                         alt="キラキラ系" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">キラキラ系生地特集<br>光を纏い、日常に輝きを。キラキラ生地で、毎日を特別に。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-032.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-yellow-300 rounded-lg hover:bg-yellow-400 transition-colors">
+                                            柄/質感・キラキラ系
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 光沢系 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-033.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/033.png" 
+                                         alt="光沢" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">光沢系生地特集<br>艶やかな光沢生地で、上質な輝きをあなたのスタイルに。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-033.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-yellow-300 rounded-lg hover:bg-yellow-400 transition-colors">
+                                            柄/質感・光沢系
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 動物柄 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-034.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/034.png" 
+                                         alt="動物柄" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">動物柄特集<br>動物柄で、おしゃれに遊ぼう！動物柄で自由なスピリットを表現します。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-034.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-yellow-300 rounded-lg hover:bg-yellow-400 transition-colors">
+                                            柄/質感・動物柄
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 花柄 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-035.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/035.png" 
+                                         alt="花柄" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">花柄特集<br>優雅な花が奏でる調べ。生地に咲く美しさで、日々を彩ります。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-035.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-yellow-300 rounded-lg hover:bg-yellow-400 transition-colors">
+                                            柄/質感・花柄
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 北欧風柄 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-036.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/036.png" 
+                                         alt="北欧風柄" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">北欧風柄特集<br>北欧の息吹を感じる柄。日常に溶け込む、洗練のデザイン。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-036.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-yellow-300 rounded-lg hover:bg-yellow-400 transition-colors">
+                                            柄/質感・北欧風柄
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 民族柄 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-048.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/048.png" 
+                                         alt="民族柄" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">異国の風を感じる、個性際立つ民族柄生地。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-048.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-yellow-300 rounded-lg hover:bg-yellow-400 transition-colors">
+                                            柄/質感・民族柄
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 市松模様 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-060.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/060.png" 
+                                         alt="市松模様" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">和とモダンが交差する瞬間、時代を超えた魅力、リズムと調和の市松模様。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-060.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-yellow-300 rounded-lg hover:bg-yellow-400 transition-colors">
+                                            柄/質感・市松模様
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ストライプ -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-059.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/059.png" 
+                                         alt="ストライプ" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">ラインが織りなすハーモニー、都会的でクールな印象。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-059.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-yellow-300 rounded-lg hover:bg-yellow-400 transition-colors">
+                                            柄/質感・ストライプ
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- その他柄 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-047.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/047.png" 
+                                         alt="その他柄" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">多彩なデザインと質感。創作広がる柄物生地。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-047.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-yellow-300 rounded-lg hover:bg-yellow-400 transition-colors">
+                                            柄/質感・その他柄
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- トリム生地 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-053.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/053.png" 
+                                         alt="トリム生地" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">細部にこだわり、装飾に華やかさを添える上質トリム生地。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-053.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-rose-500 rounded-lg hover:bg-rose-600 transition-colors">
+                                            手芸用品・トリム
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- アップリケ -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-052.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/052.png" 
+                                         alt="アップリケ" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">シンプルに彩りを添える、魅せるアップリケ。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-052.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-rose-500 rounded-lg hover:bg-rose-600 transition-colors">
+                                            手芸用品・アップリケ
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- リボンテープ -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-025-1.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/25-1.png" 
+                                         alt="リボンテープ" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">各種リボン テープ 用途に合わせてお選びいただけます。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-025-1.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-rose-500 rounded-lg hover:bg-rose-600 transition-colors">
+                                            手芸用品・リボン テープ
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- フィルム -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                                <a href="./category/index-025-2.html" target="_blank" rel="noopener">
+                                    <img src="https://www.rakuten.ne.jp/gold/southernwind/top_img/025-2.png" 
+                                         alt="フィルム" class="w-full h-48 object-cover">
+                                </a>
+                                <div class="p-4">
+                                    <p class="text-gray-600 text-sm mb-4">各種フィルム 用途に合わせてお選びいただけます。</p>
+                                    <div class="text-right">
+                                        <a href="./category/index-025-2.html" target="_blank" 
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-rose-500 rounded-lg hover:bg-rose-600 transition-colors">
+                                            手芸用品・フィルム
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">ショッピングガイド</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://www.rakuten.co.jp/southernwind/info2.html#payment" target="_blank" class="text-gray-300 hover:text-white transition-colors">お支払について</a></li>
+                        <li><a href="https://www.rakuten.co.jp/southernwind/info2.html#shipping" target="_blank" class="text-gray-300 hover:text-white transition-colors">配送について</a></li>
+                        <li><a href="https://www.rakuten.co.jp/southernwind/info2.html#return_policy" target="_blank" class="text-gray-300 hover:text-white transition-colors">キャンセル・返品・交換について</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">会社情報</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://www.rakuten.co.jp/southernwind/info.html" target="_blank" class="text-gray-300 hover:text-white transition-colors">会社概要</a></li>
+                        <li><a href="https://ask.step.rakuten.co.jp/inquiry-form/?ms=500&shop_id=369661" target="_blank" class="text-gray-300 hover:text-white transition-colors">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">サザンウインド</h3>
+                    <p class="text-gray-300 text-sm">全品送料無料！趣味・生地 布生 活雑貨のお店サザンウインドは安心の「おもてなし規格紅認証」取得ショップです。</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">&copy; 2024 サザンウインド　楽天市場店. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // モバイルメニューの制御
+        function toggleMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const overlay = document.getElementById('overlay');
+            const menuTrigger = document.querySelector('.menu-trigger');
+            
+            mobileMenu.classList.toggle('open');
+            overlay.classList.toggle('hidden');
+            menuTrigger.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const overlay = document.getElementById('overlay');
+            const menuTrigger = document.querySelector('.menu-trigger');
+            
+            mobileMenu.classList.remove('open');
+            overlay.classList.add('hidden');
+            menuTrigger.classList.remove('active');
+        }
+
+        // 検索メニューの制御
+        function toggleSearchMenu() {
+            const searchMenu = document.querySelector('.search-menu');
+            searchMenu.classList.toggle('open');
+        }
+
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // オーバーレイクリックでメニューを閉じる
+        document.addEventListener('click', function(e) {
+            if (e.target.id === 'overlay') {
+                closeMobileMenu();
+            }
+        });
+    </script>
 </body>
 </html>
+
